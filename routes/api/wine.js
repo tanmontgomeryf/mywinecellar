@@ -4,11 +4,12 @@ const { headers, objQueryToString } = require('../../helper');
 const router = express.Router();
 
 //get list of wines
-router.get('/', async (req, res) => {
+router.get('/:wine?', async (req, res) => {
+    const query = req.params.wine ? `&wine=${req.params.wine}` : '';
     try {
         //request data from wine API
         const response = await axios.get(
-            `https://api.globalwinescore.com/globalwinescores/latest/?limit=50&offset=0&ordering=-score`,
+            `https://api.globalwinescore.com/globalwinescores/latest/?limit=50&offset=0&ordering=-score${query}`,
             headers
         );
         res.json(response.data);
