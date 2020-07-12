@@ -3,7 +3,7 @@ const express = require("express")
 const app = express()
 
 
-app.use('/api/wine', require('./routes/api/wine'))
+app.use('/api/winelist', require('./routes/api/wine'))
 
 app.get('/', (req, res) => {
     res.json({ msg: "Home page"})
