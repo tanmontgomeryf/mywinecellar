@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Navbar from './component/Navbar/Navbar';
+import { useDispatch } from 'react-redux';
+
+import Navbar from './component/Layout/Navbar';
 import Landing from './component/Landing/Landing';
+import { fetchWineData } from './redux';
 
 function App() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchWineData());
+    }, [dispatch]);
+
     return (
         <div>
             <Navbar />

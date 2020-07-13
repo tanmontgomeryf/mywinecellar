@@ -5,11 +5,12 @@ const router = express.Router();
 
 //get list of wines
 router.get('/:wine?', async (req, res) => {
-    const query = req.params.wine ? `&wine=${req.params.wine}` : '';
+    const { wine } = req.params;
+    const query = wine ? `&wine=${wine}` : '';
     try {
         //request data from wine API
         const response = await axios.get(
-            `https://api.globalwinescore.com/globalwinescores/latest/?limit=50&offset=0&ordering=-score${query}`,
+            `https://api.globalwinescore.com/globalwinescores/latest/?limit=100&offset=0&ordering=-score${query}`,
             headers
         );
         res.json(response.data);
@@ -25,7 +26,7 @@ router.post('/', async (req, res) => {
         const stringQuery = req.body ? objQueryToString(req.body) : '';
         //request data from wine API
         const response = await axios.get(
-            `https://api.globalwinescore.com/globalwinescores/latest/?limit=50&offset=0&ordering=-score${stringQuery}`,
+            `https://api.globalwinescore.com/globalwinescores/latest/?limit=100&offset=0&ordering=-score${stringQuery}`,
             headers
         );
         res.json(response.data);
@@ -49,6 +50,20 @@ router.get('/wine/:wine_id/:vintage', async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(404).json('Server error');
+    }
+});
+
+router.post('/pagination', async (req, res) => {
+    console.log(req.body);
+    const nextURILink = req.body ? req.body.nextURILink : null;
+    if (nextURILink === null)
+        return res.status(404).json({ msg: 'invalid Link' });
+    try {
+        const response = await axios.get(nextURILink, headers);
+        res.json(response.data);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({ msg: 'invalid Link' });
     }
 });
 
