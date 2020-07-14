@@ -1,0 +1,94 @@
+.wineitem {
+    margin: 30px 0;
+}
+
+.wineitem .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.wineitem button {
+    background-color: var(--color-main);
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 7px 30px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.wineitem button:first-of-type {
+    margin-bottom: 30px;
+}
+
+.wineitem button:last-of-type {
+    margin-top: 30px;
+}
+
+button.avail {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.wineitem-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+}
+
+.wineitem img {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.wineitem-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wineitem h3 {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.wineitem h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 7px 0;
+}
+
+.wineitem h4 {
+    margin-top: 20px;
+    font-size: 0.6rem;
+    text-align: center;
+    color: var(--color-main);
+    font-weight: 700;
+}
+
+.scores {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media only screen and (min-width: 750px) {
+    .wineitem-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        max-width: 630px;
+        width: 100%;
+    }
+}

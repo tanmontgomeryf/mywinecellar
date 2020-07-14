@@ -2,9 +2,12 @@ import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import Navbar from './component/Layout/Navbar';
 import Landing from './component/Landing/Landing';
+import WineItem from './component/WineList/WineItem';
 import { fetchWineData } from './redux';
+import WineList from './component/WineList/WineList';
+import AddWine from './component/WineList/AddWine';
+import Navbar from './component/Layout/Navbar';
 
 function App() {
     const dispatch = useDispatch();
@@ -19,8 +22,18 @@ function App() {
                 <Route exact path="/" render={() => <Landing />} />
                 <Route
                     exact
+                    path="/wine/:wine_id/:vintage"
+                    render={(props) => <WineItem {...props} />}
+                />
+                <Route
+                    exact
                     path="/mywinecellar"
-                    render={() => <h1>My Wine Cellar</h1>}
+                    render={() => <WineList myWineCellar />}
+                />
+                <Route
+                    exact
+                    path="/mywinecellar/add"
+                    render={(props) => <AddWine {...props} />}
                 />
             </Switch>
         </div>

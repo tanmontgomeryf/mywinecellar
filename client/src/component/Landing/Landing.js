@@ -1,53 +1,26 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import WineItem from '../WineItem/WineItem';
-import { fetchMoreWineData } from '../../redux';
 import './Landing.css';
+import WineList from '../WineList/WineList';
 
-const Landing = ({
-    wine: { isLoading, wineData, error },
-    fetchMoreWineData,
-}) => {
-    const handleMoreData = () => {
-        fetchMoreWineData(wineData.next);
-    };
-    const handlePrevious = () => {
-        fetchMoreWineData(wineData.previous);
-    };
+const Landing = () => {
     return (
         <>
-            <main className="hero"></main>
-            <section className="winelist">
-                {isLoading && wineData === null ? (
-                    <h1>Loading</h1>
-                ) : (
-                    <>
-                        <div className="winelist-sidebar"></div>
-                        <div className="winelist-main">
-                            {wineData.results.map((wineData) => (
-                                <WineItem
-                                    key={`${wineData.wine_id}${wineData.vintage}`}
-                                    wineData={wineData}
-                                />
-                            ))}
-                        </div>
-                        {wineData.previous === null ? (
-                            ''
-                        ) : (
-                            <button onClick={handlePrevious}>
-                                Previous 100 items
-                            </button>
-                        )}
-                        <button onClick={handleMoreData}>Next 100 items</button>
-                    </>
-                )}
-            </section>
+            <main className="hero">
+                <div className="container">
+                    <h4>
+                        We’ve come a long way since the era of the cellar book,
+                        when wine bottles had to be logged by hand in paperbound
+                        tomes and tracked by little tags hanging from their
+                        necks. The wine world is actively embracing technology,
+                        and home enthusiasts can get in on the action as well,
+                        using this website to help keep their stash tabulated
+                        and organized.
+                    </h4>
+                </div>
+            </main>
+            <WineList myWineCellar={false} />
         </>
     );
 };
 
-const mapStateToProps = (state) => ({
-    wine: state.wine,
-});
-
-export default connect(mapStateToProps, { fetchMoreWineData })(Landing);
+export default Landing;

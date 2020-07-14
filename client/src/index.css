@@ -1,6 +1,13 @@
+:root {
+    --font-main: 'Arimo', sans-serif;
+    --color-main: #722f37;
+    --color-secondary: white;
+}
+
 html {
     box-sizing: border-box;
     font-size: 16px;
+    font-family: var(--font-main);
 }
 
 *,
@@ -33,4 +40,13 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.container {
+    width: 80%;
 }

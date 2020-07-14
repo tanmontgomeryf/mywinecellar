@@ -1,0 +1,50 @@
+.addwine {
+    padding: 30px 0;
+    height: 70vh;
+}
+
+.addwine .container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.addwine button {
+    background-color: var(--color-main);
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 7px 30px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.addwine .container button {
+    margin-bottom: 30px;
+}
+
+.addwine form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+}
+
+.addwine form input {
+    margin-bottom: 10px;
+    width: 100%;
+    border: 2px solid var(--color-main);
+    border-radius: 5px;
+    padding: 7px 14px;
+    font-family: var(--font-main);
+}
+
+.addwine form button {
+    margin-top: 10px;
+}
